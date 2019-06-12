@@ -7,14 +7,28 @@ const app = new Vue({
             { nombre: 'segundo', cantidad: 0 },
             {nombre: 'tercero', cantidad: 7}
         ],
-        nuevoArray: ''
+        nuevoArray: '',
+        total: 0,
+        fondo: 'bg-warning',
+        color: false
     },
 
     methods: {
         agregarALista() {
             this.arrays.push({
                 nombre: this.nuevoArray, cantidad: 0
-            })
+            });
+            this.nuevoArray = '';
+        }
+    },
+
+    computed: {
+        sumarArrays(){
+            this.total= 0;
+            for(array of this.arrays){
+                this.total = this.total + array.cantidad;
+            }
+            return this.total;
         }
     },
 });
